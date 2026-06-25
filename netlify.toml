@@ -1,0 +1,31 @@
+[build]
+  functions = "netlify/functions"
+  publish = "public"
+
+[functions]
+  node_bundler = "esbuild"
+  included_files = ["secure-downloads/**"]
+
+# Create a PayFast checkout URL on the server so merchant details/passphrase stay private.
+[[redirects]]
+  from = "/api/create-checkout"
+  to = "/.netlify/functions/create-checkout"
+  status = 200
+
+# PayFast ITN/webhook endpoint. PayFast posts payment confirmation here.
+[[redirects]]
+  from = "/api/payfast-itn"
+  to = "/.netlify/functions/payfast-itn"
+  status = 200
+
+# Download page polls this endpoint until the ITN has verified the order.
+[[redirects]]
+  from = "/api/get-download-link"
+  to = "/.netlify/functions/get-download-link"
+  status = 200
+
+# Secure file delivery endpoint. Valid signed token required.
+[[redirects]]
+  from = "/api/download-file"
+  to = "/.netlify/functions/download-file"
+  status = 200
