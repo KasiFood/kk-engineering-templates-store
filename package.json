@@ -1,0 +1,9 @@
+{
+  "name": "kk-engineering-secure-sales-flow",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static KK Engineering template store with Netlify Functions, PayFast ITN verification, and secure token-based downloads.",
+  "dependencies": {
+    "@netlify/blobs": "latest"
+  }
+}
